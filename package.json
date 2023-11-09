@@ -1,0 +1,37 @@
+{
+  "name": "lit-shop",
+  "version": "1.0.0",
+  "author": "Oliver Yasuna",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "npx nx run-many --target clean",
+    "build": "npx nx run-many --target build"
+  },
+  "dependencies": {
+    "lit": "^3.0.2"
+  },
+  "devDependencies": {
+    "@lerna-lite/cli": "^2.6.0",
+    "@lerna-lite/run": "^2.6.0",
+    "@types/node": "^18.18.3",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "nx": "^17.0.2",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <19.0.0"
+  },
+  "packageManager": "pnpm@8.6.12"
+}

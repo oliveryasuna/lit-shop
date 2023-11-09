@@ -1,0 +1,11 @@
+{
+  "extends": "./config/typescript/tsconfig.node.json",
+  "include": [
+    "./jest.config.ts",
+    "./packages/*/**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./packages/*/dist"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Modules
+    //--------------------------------------------------
+
+    "moduleResolution": "node",
+
+    // Emit
+    //--------------------------------------------------
+
+    "noEmit": true
+  }
+}

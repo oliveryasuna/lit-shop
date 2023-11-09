@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // Modules
+    //--------------------------------------------------
+
+    "moduleResolution": "bundler",
+
+    // Emit
+    //--------------------------------------------------
+
+    "noEmit": true
+  }
+}

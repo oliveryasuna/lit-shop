@@ -1,0 +1,27 @@
+{
+  "name": "@lit-shop/functions",
+  "version": "1.0.0",
+  "description": "Framework-agnostic functional web components.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./README.md",
+    "../../LICENSE.txt",
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./dist/*",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist ./tsconfig.build.tsbuildinfo",
+    "build": "tsup",
+    "playground": "vite serve"
+  }
+}

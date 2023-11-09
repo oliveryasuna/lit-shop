@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Modules
+    //--------------------------------------------------
+
+    "rootDir": "./src",
+
+    // Emit
+    //--------------------------------------------------
+
+    "emitDeclarationOnly": true,
+    "outDir": "./dist"
+  }
+}
