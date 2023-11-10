@@ -1,6 +1,7 @@
 import WebComponent from './web-component';
 import type ScheduledHook from './scheduled-hook';
 import type FunctionalHtmlElement from './functional-html-element';
+import type HookData from './hook-data';
 
 /**
  * Base class for functional elements.
@@ -56,6 +57,8 @@ abstract class FunctionalElementBase<Properties = {}> extends WebComponent imple
    * Renders the element.
    */
   protected abstract _render(): void;
+
+  public abstract getHookData(): HookData;
 
   public schedulePreRenderHook(callback: () => void, synchronous: boolean): void {
     this._scheduledPreRenderHooks.push({

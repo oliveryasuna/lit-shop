@@ -4,6 +4,7 @@ export * from './functional-element-factory';
 export * from './functional-element-factory-factory';
 export * from './functional-element-options';
 export * from './functional-html-element';
+export * from './hook-data';
 export * from './render-fn';
 export * from './scheduled-hook';
 export * from './web-component';

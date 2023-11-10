@@ -1,3 +1,5 @@
+import type HookData from './hook-data';
+
 /**
  * The public API of functional elements.
  */
@@ -6,6 +8,11 @@ type FunctionalHtmlElement = (HTMLElement & {
    * Updates the element.
    */
   update: (() => void),
+
+  /**
+   * Gets hook data.
+   */
+  getHookData: (() => HookData),
 
   /**
    * Schedules a hook to be called before the element is rendered.

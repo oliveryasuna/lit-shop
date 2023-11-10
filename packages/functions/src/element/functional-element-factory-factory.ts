@@ -3,6 +3,7 @@ import type FunctionalElement from './functional-element';
 import type {FromAttributeFn, PropertyDeclaration, ToAttributeFn} from '../property';
 import FunctionalElementBase from './functional-element-base';
 import type FunctionalElementOptions from './functional-element-options';
+import type HookData from './hook-data';
 
 type CurrentInstance = {current: (FunctionalHtmlElement | null)};
 
@@ -129,6 +130,9 @@ const functionalElementFactoryFactory = (<RenderResult>(
 
           this.ignoreAttributeChanges = false;
 
+          this.__hookDatas = [];
+          this.__hookCounter = -1;
+
           for(const [propertyName, propertyDeclaration] of Object.entries(propertyDeclarations)) {
             const attributeName: (string | undefined) = propertyDeclaration.attributeName;
 
@@ -141,6 +145,10 @@ const functionalElementFactoryFactory = (<RenderResult>(
         }
 
         public ignoreAttributeChanges: boolean;
+
+        private readonly __hookDatas: HookData[];
+
+        private __hookCounter: number;
 
         public override disconnectedCallback(): void {
           // TODO: Cleanup?
@@ -173,7 +181,9 @@ const functionalElementFactoryFactory = (<RenderResult>(
         }
 
         protected override _render(): void {
-          // TODO: Hooks.
+          this.__hookCounter = -1;
+
+          setCurrentInstance(this);
 
           // Copy the properties in case they change during rendering.
           const properties: Properties = ({} as any);
@@ -226,6 +236,16 @@ const functionalElementFactoryFactory = (<RenderResult>(
           this._scheduledPostRenderHooks.length = 0;
         }
 
+        public override getHookData(): HookData {
+          this.__hookCounter++;
+
+          if(this.__hookDatas.length <= this.__hookCounter) {
+            this.__hookDatas.push({});
+          }
+
+          return this.__hookDatas[this.__hookCounter]!;
+        }
+
       }
 
       for(const [propertyName, propertyDeclaration] of Object.entries(propertyDeclarations)) {
@@ -247,7 +267,9 @@ const functionalElementFactoryFactory = (<RenderResult>(
 
                 if(propertyDeclaration.attribute && propertyDeclaration.reflect) {
                   this.ignoreAttributeChanges = true;
+
                   this.setAttribute(propertyDeclaration.attributeName!, propertyDeclaration.toAttribute!(value));
+
                   this.ignoreAttributeChanges = false;
                 }
 
