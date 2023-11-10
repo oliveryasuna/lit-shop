@@ -1,5 +1,14 @@
+/**
+ * Options for a functional element.
+ */
 type FunctionalElementOptions = {
-  isUseShadowDom?: boolean
+  /**
+   * Whether to use shadow DOM.
+   */
+  useShadowDom?: boolean
 };
 
 export default FunctionalElementOptions;
+export type {
+  FunctionalElementOptions
+};

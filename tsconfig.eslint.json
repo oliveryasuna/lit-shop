@@ -2,7 +2,8 @@
   "extends": "./config/typescript/tsconfig.node.json",
   "include": [
     "./jest.config.ts",
-    "./packages/*/**/*.ts"
+    "./packages/*/src/**/*.ts",
+    "./packages/*/tests/**/*.ts"
   ],
   "exclude": [
     "./node_modules",

@@ -1,28 +1,33 @@
-import type {RenderRoot} from './render-fn';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import RenderFn from './render-fn';
-import type {CreateFunctionElementResult} from './create-functional-element';
-import createFunctionalElement from './create-functional-element';
-import type FunctionalElementOptions from './functional-element-options';
+import type {ReadonlyPropertyDeclarationDictionary} from '../property';
 
-const functionalElement = (<RenderResult>(
-    renderFn: RenderFn<RenderResult>,
-    defaultOptions?: FunctionalElementOptions
-): CreateFunctionElementResult<RenderResult> =>
-    createFunctionalElement<RenderResult>((instance: HTMLElement, data: RenderResult, userOptions?: FunctionalElementOptions): void => {
-      let target: RenderRoot = instance;
+/**
+ * A functional element.
+ *
+ * @typeParam RenderResult - The type of the render result.
+ */
+type FunctionalElement<Properties = {}, RenderResult = unknown> = {
+  /**
+   * Renders a result based on the given properties.
+   *
+   * @param properties - The properties on which to base the result.
+   */
+  (properties: Properties): RenderResult,
 
-      const options: Required<FunctionalElementOptions> = {
-        isUseShadowDom: true,
-        ...(defaultOptions ?? {}),
-        ...(userOptions ?? {})
-      };
+  /**
+   * The properties used by the renderer.
+   */
+  properties?: ReadonlyPropertyDeclarationDictionary
+};
 
-      if(options.isUseShadowDom) {
-        target = (instance.shadowRoot ?? instance.attachShadow({mode: 'open'}));
-      }
+/**
+ * Convenience alias for {@link FunctionalElement}.
+ *
+ * @typeParam Result - The type of the result.
+ */
+type FE<Result> = FunctionalElement<Result>;
 
-      renderFn(data, target);
-    }));
-
-export default functionalElement;
+export default FunctionalElement;
+export type {
+  FunctionalElement,
+  FE
+};

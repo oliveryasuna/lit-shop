@@ -314,7 +314,7 @@
         //        "object-property-newline": "error",
         "operator-linebreak": [
           "error",
-          "after",
+          "before",
           {
             "overrides": {
               "?": "before",

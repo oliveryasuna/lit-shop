@@ -1,9 +1,6 @@
 export * from './attribute-converter';
 export * from './attribute-type';
-export * from './has-changed';
-export * from './property';
-export * from './property-map';
-
-import type Property from './property';
-
-export default Property;
+export * from './has-changed-fn';
+export * from './property-declaration';
+export * from './property-declaration-dictionary';
+export * from './property-declaration-map';
