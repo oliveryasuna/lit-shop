@@ -11,6 +11,8 @@ type FunctionalHtmlElement = (HTMLElement & {
 
   /**
    * Gets hook data.
+   *
+   * @returns The hook data.
    */
   getHookData: (() => HookData),
 
