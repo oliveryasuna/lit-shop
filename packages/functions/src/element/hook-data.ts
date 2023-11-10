@@ -12,7 +12,8 @@ type HookData = {
 
   // TODO: Context.
 
-  // TODO: Ref.
+  // Ref.
+  ref?: any,
 
   // TODO: Imperative handle.
 
