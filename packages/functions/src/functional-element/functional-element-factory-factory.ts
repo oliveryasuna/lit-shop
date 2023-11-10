@@ -136,7 +136,6 @@ const functionalElementFactoryFactory = (<RenderResult>(
               continue;
             }
 
-            // TODO: Better typing.
             (this._properties as any)[propertyName] = propertyDeclaration.fromAttribute!(this.getAttribute(attributeName));
           }
         }
@@ -168,7 +167,7 @@ const functionalElementFactoryFactory = (<RenderResult>(
           this[propertyName] = propertyDeclaration.fromAttribute!(newValue);
         }
 
-        protected override _update(): void {
+        public override update(): void {
           // TODO: Does this work?
           setTimeout(this._render.bind(this), 0);
         }
@@ -254,7 +253,7 @@ const functionalElementFactoryFactory = (<RenderResult>(
 
                 this._properties[propertyName] = value;
 
-                this._update();
+                this.update();
               }
             }
         );

@@ -40,7 +40,7 @@ abstract class FunctionalElementBase<Properties = {}> extends WebComponent imple
   protected readonly _scheduledPostRenderHooks: ScheduledHook[];
 
   public override connectedCallback(): void {
-    this._update();
+    this.update();
   }
 
   public abstract override disconnectedCallback(): void;
@@ -50,7 +50,7 @@ abstract class FunctionalElementBase<Properties = {}> extends WebComponent imple
   /**
    * Updates the element.
    */
-  protected abstract _update(): void;
+  public abstract update(): void;
 
   /**
    * Renders the element.
