@@ -3,6 +3,7 @@ import type {ReadonlyPropertyDeclarationDictionary} from '../property';
 /**
  * A functional element.
  *
+ * @typeParam Properties - The type of the properties.
  * @typeParam RenderResult - The type of the render result.
  */
 type FunctionalElement<Properties = {}, RenderResult = unknown> = {
@@ -22,9 +23,10 @@ type FunctionalElement<Properties = {}, RenderResult = unknown> = {
 /**
  * Convenience alias for {@link FunctionalElement}.
  *
- * @typeParam Result - The type of the result.
+ * @typeParam Properties - The type of the properties.
+ * @typeParam RenderResult - The type of the result.
  */
-type FE<Result> = FunctionalElement<Result>;
+type FE<Properties = {}, RenderResult = unknown> = FunctionalElement<Properties, RenderResult>;
 
 export default FunctionalElement;
 export type {
