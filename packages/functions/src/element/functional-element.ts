@@ -1,4 +1,4 @@
-import type {ReadonlyPropertyDeclarationDictionary} from '../property';
+import type {PropertyDeclaration} from '../property';
 
 /**
  * A functional element.
@@ -17,7 +17,7 @@ type FunctionalElement<RenderResult = unknown, Properties = {}> = {
   /**
    * The properties used by the renderer.
    */
-  properties?: ReadonlyPropertyDeclarationDictionary
+  properties?: Record<(keyof Properties), PropertyDeclaration>
 };
 
 /**

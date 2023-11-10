@@ -7,6 +7,9 @@
     "./node_modules",
     "./dist"
   ],
+  "references": [
+    {"path": "./tsconfig.test.json"}
+  ],
   "compilerOptions": {
     // Modules
     //--------------------------------------------------

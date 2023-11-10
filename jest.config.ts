@@ -6,7 +6,12 @@ const config: Config = {
     {
       displayName: functionsPackageJson.name,
       preset: 'ts-jest/presets/js-with-ts',
-      testMatch: ['<rootDir>/packages/functions/tests/**/*.test.ts']
+      testMatch: ['<rootDir>/packages/functions/tests/**/*.test.ts'],
+      globals: {
+        'ts-jest': {
+          tsconfig: '<rootDir>/packages/functions/tsconfig.test.json'
+        }
+      }
     }
   ],
   transform: {

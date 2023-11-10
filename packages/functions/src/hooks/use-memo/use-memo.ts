@@ -6,6 +6,8 @@ import {getCurrentInstance} from '../../element';
 type UseMemoResult<T> = T;
 
 const useMemo = (<T>(factory: (() => T), dependencies?: Dependency[]): UseMemoResult<T> => {
+  console.log('foo');
+
   const instance: FunctionalHtmlElement = getCurrentInstance()!;
   const data: HookData = instance.getHookData();
 

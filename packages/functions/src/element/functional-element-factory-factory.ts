@@ -4,6 +4,7 @@ import type {FromAttributeFn, PropertyDeclaration, ToAttributeFn} from '../prope
 import FunctionalElementBase from './functional-element-base';
 import type FunctionalElementOptions from './functional-element-options';
 import type HookData from './hook-data';
+import {AnyConstructor} from '../utils';
 
 type CurrentInstance = {current: (FunctionalHtmlElement | null)};
 
@@ -106,15 +107,15 @@ const createPropertyDeclarations = (<RenderResult>(renderer: FunctionalElement<R
 });
 
 type FunctionalElementFactoryFactoryResult<RenderResult> =
-    (<Properties = {}>(renderer: FunctionalElement<RenderResult, Properties>) => CustomElementConstructor);
+    (<Properties = {}>(renderer: FunctionalElement<RenderResult, Properties>) => AnyConstructor<FunctionalHtmlElement>);
 
 const functionalElementFactoryFactory = (<RenderResult>(
-    render: ((element: HTMLElement, source: RenderResult, options?: FunctionalElementOptions) => void)
+    render: ((element: FunctionalHtmlElement, source: RenderResult, options?: FunctionalElementOptions) => void)
 ): FunctionalElementFactoryFactoryResult<RenderResult> =>
     (<Properties = {}>(
         functionalElement: FunctionalElement<RenderResult, Properties>,
         options?: FunctionalElementOptions
-    ): CustomElementConstructor => {
+    ): AnyConstructor<FunctionalHtmlElement> => {
       const propertyDeclarations: FunctionalElementPropertyDeclarationDictionary = createPropertyDeclarations(functionalElement);
 
       class FunctionalElementClass extends FunctionalElementBase<Properties> {

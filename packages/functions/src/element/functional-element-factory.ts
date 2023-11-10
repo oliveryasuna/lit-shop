@@ -4,12 +4,13 @@ import RenderFn from './render-fn';
 import type {FunctionalElementFactoryFactoryResult} from './functional-element-factory-factory';
 import functionalElementFactoryFactory from './functional-element-factory-factory';
 import type FunctionalElementOptions from './functional-element-options';
+import type FunctionalHtmlElement from './functional-html-element';
 
 const functionalElementFactory = (<RenderResult>(
     render: RenderFn<RenderResult>,
     defaultOptions?: FunctionalElementOptions
 ): FunctionalElementFactoryFactoryResult<RenderResult> =>
-    functionalElementFactoryFactory((element: HTMLElement, source: RenderResult, userOptions?: FunctionalElementOptions): void => {
+    functionalElementFactoryFactory((element: FunctionalHtmlElement, source: RenderResult, userOptions?: FunctionalElementOptions): void => {
       const options: Required<FunctionalElementOptions> = {
         useShadowDom: true,
         ...(defaultOptions ?? {}),
