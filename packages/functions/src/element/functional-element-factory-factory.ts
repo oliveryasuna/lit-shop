@@ -95,7 +95,7 @@ const createPropertyDeclaration = ((propertyName: string, propertyDeclarationVal
   return propertyDeclaration;
 });
 
-const createPropertyDeclarations = (<RenderResult>(renderer: FunctionalElement<any, RenderResult>): FunctionalElementPropertyDeclarationDictionary => {
+const createPropertyDeclarations = (<RenderResult>(renderer: FunctionalElement<RenderResult, any>): FunctionalElementPropertyDeclarationDictionary => {
   const propertyDeclarations: FunctionalElementPropertyDeclarationDictionary = {};
 
   for(const [propertyName, propertyDeclarationValue] of Object.entries(renderer.properties ?? {})) {
@@ -106,13 +106,13 @@ const createPropertyDeclarations = (<RenderResult>(renderer: FunctionalElement<a
 });
 
 type FunctionalElementFactoryFactoryResult<RenderResult> =
-    (<Properties = {}>(renderer: FunctionalElement<Properties, RenderResult>) => CustomElementConstructor);
+    (<Properties = {}>(renderer: FunctionalElement<RenderResult, Properties>) => CustomElementConstructor);
 
 const functionalElementFactoryFactory = (<RenderResult>(
     render: ((element: HTMLElement, source: RenderResult, options?: FunctionalElementOptions) => void)
 ): FunctionalElementFactoryFactoryResult<RenderResult> =>
     (<Properties = {}>(
-        functionalElement: FunctionalElement<Properties, RenderResult>,
+        functionalElement: FunctionalElement<RenderResult, Properties>,
         options?: FunctionalElementOptions
     ): CustomElementConstructor => {
       const propertyDeclarations: FunctionalElementPropertyDeclarationDictionary = createPropertyDeclarations(functionalElement);
