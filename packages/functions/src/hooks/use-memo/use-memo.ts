@@ -5,7 +5,7 @@ import {getCurrentInstance} from '../../element';
 
 type UseMemoResult<T> = T;
 
-const useMemo = (<T>(factory: (() => T), dependencies: (Dependency[] | undefined)): UseMemoResult<T> => {
+const useMemo = (<T>(factory: (() => T), dependencies?: Dependency[]): UseMemoResult<T> => {
   const instance: FunctionalHtmlElement = getCurrentInstance()!;
   const data: HookData = instance.getHookData();
 
