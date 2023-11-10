@@ -8,10 +8,21 @@ type HookData = {
   state?: any,
   setState?: ((state: (any | ((oldState: any) => any))) => void),
 
+  // TODO: Reducer.
+
+  // TODO: Context.
+
+  // TODO: Ref.
+
+  // TODO: Imperative handle.
+
   // Effect.
   callback?: (() => (void | (() => void))),
   cleanup?: ((() => void) | null),
-  dependencies?: (Dependency[] | null)
+  dependencies?: (Dependency[] | null),
+
+  // Memo.
+  memo?: any
 };
 
 export default HookData;
